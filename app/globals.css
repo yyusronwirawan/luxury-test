@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold: #d4af37;
+}
+
+.bg-gold {
+  background-color: var(--gold);
+}
+
+.text-gold {
+  color: var(--gold);
+}
+
+.from-gold {
+  --tw-gradient-from: var(--gold);
+}
+
+.to-gold {
+  --tw-gradient-to: var(--gold);
+}
+
+/* Add smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ensure proper min-height on mobile */
+.min-h-screen {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+/* Improve backdrop blur performance */
+.backdrop-blur-lg {
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+/* Improve button tap highlight on mobile */
+@media (hover: none) {
+  .button {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
