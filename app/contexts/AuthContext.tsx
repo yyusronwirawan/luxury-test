@@ -36,7 +36,7 @@ const SESSION_DURATION = 24 * 60 * 60 * 1000 // 24 hours
 const ADMIN_CREDENTIALS = {
   username: "adminmps",
   // This hash corresponds to "adminmps123" with pepper
-  passwordHash: "$2a$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdsBPtSF9eBwy.K",
+  passwordHash: "$2b$12$DC8gMysUVBJ.07DCWXZ30u5ekUJ.8DKGWUnGFpwo8eDJIHd26TKMW",
   email: "admin@example.com",
 }
 
