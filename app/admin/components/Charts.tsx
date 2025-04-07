@@ -12,7 +12,7 @@ import {
   Title,
   Tooltip,
   Legend,
-  Filler, // Tambahkan ini
+  Filler,
   type ChartOptions,
 } from "chart.js"
 
@@ -26,7 +26,7 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  Filler, // Tambahkan ini
+  Filler,
 )
 
 interface ChartData {
@@ -34,7 +34,7 @@ interface ChartData {
   value: number
 }
 
-const defaultOptions: ChartOptions<"line"> = {
+const defaultLineOptions: ChartOptions<"line"> = {
   responsive: true,
   plugins: {
     legend: {
@@ -48,6 +48,27 @@ const defaultOptions: ChartOptions<"line"> = {
   hover: {
     mode: "nearest",
     intersect: true,
+  },
+  scales: {
+    y: {
+      beginAtZero: true,
+      ticks: {
+        callback: (value) => `$${value}`,
+      },
+    },
+  },
+}
+
+const defaultBarOptions: ChartOptions<"bar"> = {
+  responsive: true,
+  plugins: {
+    legend: {
+      display: false,
+    },
+    tooltip: {
+      mode: "index",
+      intersect: false,
+    },
   },
   scales: {
     y: {
@@ -77,12 +98,12 @@ export function LineChart({ data }: { data: ChartData[] }) {
         borderColor: "rgb(75, 85, 99)",
         backgroundColor: "rgba(75, 85, 99, 0.5)",
         tension: 0.4,
-        fill: true, // Tambahkan ini jika Anda ingin menggunakan fill
+        fill: true,
       },
     ],
   }
 
-  return <Line options={defaultOptions} data={chartData} />
+  return <Line options={defaultLineOptions} data={chartData} />
 }
 
 export function BarChart({ data }: { data: ChartData[] }) {
@@ -98,7 +119,7 @@ export function BarChart({ data }: { data: ChartData[] }) {
     ],
   }
 
-  return <Bar options={defaultOptions} data={chartData} />
+  return <Bar options={defaultBarOptions} data={chartData} />
 }
 
 export function PieChart({ data }: { data: ChartData[] }) {
@@ -115,16 +136,18 @@ export function PieChart({ data }: { data: ChartData[] }) {
   }
 
   const pieOptions: ChartOptions<"pie"> = {
-    ...defaultOptions,
+    responsive: true,
     plugins: {
-      ...defaultOptions.plugins,
       legend: {
         display: true,
         position: "right",
+      },
+      tooltip: {
+        mode: "index",
+        intersect: false,
       },
     },
   }
 
   return <Pie options={pieOptions} data={chartData} />
 }
-
